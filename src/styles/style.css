@@ -1,0 +1,22 @@
+body {
+    background-color: black;
+    color: white;
+    margin: 0;
+    font-family: 'Jost', sans-serif;
+}
+
+#app {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#map {
+    height: 300px; /* Adjust the height as needed */
+    margin-top: 20px; /* Add some space between the IP information and the map */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}

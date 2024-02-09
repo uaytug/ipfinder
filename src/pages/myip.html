@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPFINDER - MY IP</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="../scripts/vueApp.js" defer></script>
+    <script src="../scripts/myip.js" defer></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/logo.png">
+</head>
+<body>
+    <div id="app">
+        <h1>IP Finder</h1>
+        <input type="hidden" v-model="ipAddress">
+        <div v-if="ipInfo">
+            <h2>IP Information:</h2>
+            <p><strong>IP Address:</strong> {{ ipInfo.ip }}</p>
+            <p><strong>City:</strong> {{ ipInfo.city }}</p>
+            <p><strong>Region:</strong> {{ ipInfo.region }}</p>
+            <p><strong>Country:</strong> {{ ipInfo.country_name }}</p>
+            <p><strong>Country Code:</strong> {{ ipInfo.country }}</p>
+            <p><strong>ISP:</strong> {{ ipInfo.org }}</p>
+            <p><strong>Latitude:</strong> {{ ipInfo.latitude }}</p>
+            <p><strong>Longitude:</strong> {{ ipInfo.longitude }}</p>
+            <p><strong>Postal Code:</strong> {{ ipInfo.postal }}</p>
+            <p><strong>Timezone:</strong> {{ ipInfo.timezone }}</p>
+            <p><strong>ASN:</strong> {{ ipInfo.asn }}</p>
+        </div>
+    </div>
+    <div id="map"></div>
+    <footer>
+        <p>&copy; 2024 <a rel="noreferrer" href="http://uaytug.dev" target="_blank">uaytug</a></p>
+    </footer>
+</body>
+</html>
