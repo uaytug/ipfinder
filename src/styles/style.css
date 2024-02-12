@@ -12,8 +12,10 @@ body {
 }
 
 #map {
-    height: 300px; /* Adjust the height as needed */
-    margin-top: 20px; /* Add some space between the IP information and the map */
+    height: 300px;
+    width: 100%;
+    border: solid thin #ddd;
+    margin-top: 20px;
 }
 
 footer {
