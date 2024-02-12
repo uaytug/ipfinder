@@ -11,6 +11,46 @@ body {
     padding: 20px;
 }
 
+nav {
+    background-color: #000;
+    color: #0f0;
+    padding: 10px;
+    text-align: center;
+}
+
+nav h1 {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    color: #0f0;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+
+  
 #map {
     height: 300px;
     width: 100%;

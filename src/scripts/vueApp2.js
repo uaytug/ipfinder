@@ -1,16 +1,21 @@
-const { createApp, ref, onMounted } = Vue;
+const { createApp, ref } = Vue;
 
 createApp({
     setup() {
         const ipAddress = ref('');
         const ipInfo = ref(null);
+        let map;
 
         const initMap = (latitude, longitude) => {
-            const map = L.map('map').setView([latitude, longitude], 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-                maxZoom: 18,
-            }).addTo(map);
+            if (map) {
+                map.setView([latitude, longitude], 13);
+            } else {
+                map = L.map('map').setView([latitude, longitude], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                    maxZoom: 18,
+                }).addTo(map);
+            }
             try{
                 map.invalidateSize();
             } catch(error){
@@ -23,7 +28,7 @@ createApp({
 
         const fetchIPInfo = async () => {
             try {
-                const response = await fetch(`https://ipapi.co/json/`);
+                const response = await fetch(`https://ipapi.co/${ipAddress.value}/json/`);
                 ipInfo.value = await response.json();
                 if (ipInfo.value) {
                     initMap(ipInfo.value.latitude, ipInfo.value.longitude);
@@ -32,12 +37,21 @@ createApp({
                 console.error('Error fetching IP information:', error);
             }
         };
-        onMounted(fetchIPInfo);
+
+        const handleSubmit = () => {
+            lookup();
+        };
+
+        const lookup = async () => {
+            ipInfo.value = null;
+            fetchIPInfo();
+        }
 
         return {
             ipAddress,
             ipInfo,
+            handleSubmit,
+            lookup,
         };
     }
 }).mount('#app');
-

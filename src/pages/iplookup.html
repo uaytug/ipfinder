@@ -6,18 +6,27 @@
     <title>IPFINDER - MY IP</title>
     <link rel="stylesheet" href="../styles/style.css">
     <script src="https://unpkg.com/vue@3"></script>
-    <script src="../scripts/vueApp.js" defer></script>
+    <script src="../scripts/vueApp2.js" defer></script>
     <script src="../scripts/myip.js" defer></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
     <link rel="icon" href="../images/logo.png">
 </head>
-<body>
-    <div id="app">
+<body>     
+    <nav>
         <h1>IP Finder</h1>
+        <ul>
+            <li><a class="myip" href="myip.html">My IP</a></li>
+            <li><a class="lookup" href="iplookup.html">IP Lookup</a></li>
+    </nav>
+    
+    <div id="app">
+        <h1>IP Lookup</h1>
         <input v-model="ipAddress">
+        <button @click="lookup">Lookup</button> 
         <div v-if="ipInfo">
             <h2>IP Information:</h2>
             <p><strong>IP Address:</strong> {{ ipInfo.ip }}</p>
@@ -34,6 +43,7 @@
         </div>
         <div id="map" style="width: 100%;  height: 500px;"></div>
     </div>
+
     <footer>
         <p>&copy; 2024 <a rel="noreferrer" href="http://uaytug.dev" target="_blank">uaytug</a></p>
     </footer>
